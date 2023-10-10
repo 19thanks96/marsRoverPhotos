@@ -6,7 +6,7 @@ let page = 1
 let sol = 1
 let loader = document.querySelector('.loader')
 let time = 5000
-async function run(DEMO_KEY, sol, page ) {
+async function run(DEMO_KEY, page, sol ) {
     try {
         photosDiv.innerHTML = ''
         loader.style.display = 'inline-block'
@@ -32,6 +32,7 @@ async function run(DEMO_KEY, sol, page ) {
       }, time);
     }
 }
+
 document.querySelector('#next_sol').addEventListener('click',() => {
     sol += 1;
     run(DEMO_KEY, page, sol)
@@ -41,13 +42,13 @@ document.querySelector('#next_page').addEventListener('click',() => {
     run(DEMO_KEY, page, sol)
 })
 document.querySelector('#prev_page').addEventListener('click',() => {
-    if(page < 1) {
+    if(page > 0) {
         page -= 1;
         run(DEMO_KEY, page, sol)
     }
 })
 document.querySelector('#prev_sol').addEventListener('click',() => {
-    if(sol < 1) {
+    if(sol > 0) {
         sol -= 1;
         run(DEMO_KEY, page, sol)
     }
